@@ -1,0 +1,30 @@
+# Пример конфигурации Prometheus для мониторинга Vinteo VCS
+# Скопируйте этот блок в ваш prometheus.yml
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Мониторинг Vinteo VCS через SNMP
+  - job_name: 'vinteo_vcs'
+    scrape_interval: 30s
+    metrics_path: /snmp
+    params:
+      module: [vinteo_vcs_web]
+      auth: [vinteo_v2c_public]
+    static_configs:
+      - targets: 
+        - '192.168.16.10'  # ЗАМЕНИТЕ на IP вашего Vinteo сервера
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 'localhost:9116'  # Или IP сервера где запущен SNMP Exporter
+

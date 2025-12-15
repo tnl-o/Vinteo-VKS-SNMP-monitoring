@@ -1,0 +1,166 @@
+auths:
+  vinteo_v2c_public:
+    version: 2
+    community: vinteo # TODO: replace with your community
+
+modules:
+  vinteo_vcs_web:
+    walk:
+      - 1.3.6.1.4.1.57528.825.836
+    metrics:
+      - name: vinteo_vcs_web_participant_registrations
+        oid: 1.3.6.1.4.1.57528.825.836.4.1
+        type: gauge
+        help: Total number of registered sip client channels.
+
+      - name: vinteo_vcs_web_replication_actualised
+        oid: 1.3.6.1.4.1.57528.825.836.6.1
+        type: gauge
+        help: Whether or not server replication is actualised (1 yes, 0 no).
+
+      - name: vinteo_vcs_web_records_active
+        oid: 1.3.6.1.4.1.57528.825.836.5.1
+        type: gauge
+        help: Active recordings count.
+
+      - name: vinteo_vcs_web_records_stored
+        oid: 1.3.6.1.4.1.57528.825.836.5.2
+        type: gauge
+        help: Total stored recordings.
+
+      - name: vinteo_vcs_web_webcasts_hls_active
+        oid: 1.3.6.1.4.1.57528.825.836.2.1.1
+        type: gauge
+        help: Amount of active HLS casts.
+
+      - name: vinteo_vcs_web_webcasts_hls_clients
+        oid: 1.3.6.1.4.1.57528.825.836.2.1.2
+        type: gauge
+        help: Online clients watching active HLS casts.
+
+      - name: vinteo_vcs_web_webcasts_multicast_active
+        oid: 1.3.6.1.4.1.57528.825.836.2.2.1
+        type: gauge
+        help: Active multicast translations (deprecated).
+
+      - name: vinteo_vcs_web_webcasts_youtube_active
+        oid: 1.3.6.1.4.1.57528.825.836.2.3.1
+        type: gauge
+        help: Active YouTube casts.
+
+      - name: vinteo_vcs_web_webcasts_manual_active
+        oid: 1.3.6.1.4.1.57528.825.836.2.4.1
+        type: gauge
+        help: Active manually configured casts.
+
+      - name: vinteo_vcs_web_licenses_vga
+        oid: 1.3.6.1.4.1.57528.825.836.3.1.1
+        type: gauge
+        help: Amount of VGA channel licenses.
+
+      - name: vinteo_vcs_web_licenses_hd
+        oid: 1.3.6.1.4.1.57528.825.836.3.1.2
+        type: gauge
+        help: Amount of HD channel licenses.
+
+      - name: vinteo_vcs_web_licenses_fullhd
+        oid: 1.3.6.1.4.1.57528.825.836.3.1.3
+        type: gauge
+        help: Amount of FullHD channel licenses.
+
+      - name: vinteo_vcs_web_licenses_audio
+        oid: 1.3.6.1.4.1.57528.825.836.3.1.4
+        type: gauge
+        help: Amount of audio channel licenses.
+
+      - name: vinteo_vcs_web_license_feature_recording_enabled
+        oid: 1.3.6.1.4.1.57528.825.836.3.2.1
+        type: gauge
+        help: If conference recording is enabled by the license (1 yes, 0 no).
+
+      - name: vinteo_vcs_web_license_feature_webcast_enabled
+        oid: 1.3.6.1.4.1.57528.825.836.3.2.2
+        type: gauge
+        help: If webcasting functionality is enabled by the license (1 yes, 0 no).
+
+      - name: vinteo_vcs_web_conference_number
+        oid: 1.3.6.1.4.1.57528.825.836.1.1.1.1
+        type: gauge
+        help: Conference number.
+        indexes:
+          - labelname: vvw_conference_number
+            type: Integer32
+
+      - name: vinteo_vcs_web_conference_description
+        oid: 1.3.6.1.4.1.57528.825.836.1.1.1.2
+        type: DisplayString
+        help: Conference description.
+        indexes:
+          - labelname: vvw_conference_number
+            type: Integer32
+
+      - name: vinteo_vcs_web_conference_status
+        oid: 1.3.6.1.4.1.57528.825.836.1.1.1.3
+        type: gauge
+        help: Conference status (on/off).
+        indexes:
+          - labelname: vvw_conference_number
+            type: Integer32
+
+      - name: vinteo_vcs_web_conference_temporary
+        oid: 1.3.6.1.4.1.57528.825.836.1.1.1.4
+        type: gauge
+        help: If conference is temporary.
+        indexes:
+          - labelname: vvw_conference_number
+            type: Integer32
+
+      - name: vinteo_vcs_web_conference_shutdown
+        oid: 1.3.6.1.4.1.57528.825.836.1.1.1.5
+        type: gauge
+        help: If conference is going to shutdown after some time.
+        indexes:
+          - labelname: vvw_conference_number
+            type: Integer32
+
+      - name: vinteo_vcs_web_conference_participants
+        oid: 1.3.6.1.4.1.57528.825.836.1.1.1.6
+        type: gauge
+        help: Amount of participants in the conference.
+        indexes:
+          - labelname: vvw_conference_number
+            type: Integer32
+
+      - name: vinteo_vcs_web_conference_online
+        oid: 1.3.6.1.4.1.57528.825.836.1.1.1.7
+        type: gauge
+        help: Amount of online clients in this conference.
+        indexes:
+          - labelname: vvw_conference_number
+            type: Integer32
+
+      - name: vinteo_vcs_web_conferences_total_online_clients
+        oid: 1.3.6.1.4.1.57528.825.836.1.2
+        type: gauge
+        help: Total amount of online clients in all conferences.
+
+      - name: vinteo_vcs_web_conferences_total
+        oid: 1.3.6.1.4.1.57528.825.836.1.3
+        type: gauge
+        help: Total amount of setup conferences on the server.
+
+      - name: vinteo_vcs_web_conferences_total_active
+        oid: 1.3.6.1.4.1.57528.825.836.1.4
+        type: gauge
+        help: Total amount of currently active conferences.
+
+      - name: vinteo_vcs_web_conferences_p2p_rooms
+        oid: 1.3.6.1.4.1.57528.825.836.1.5
+        type: gauge
+        help: Total amount of p2p connections (rooms).
+
+      - name: vinteo_vcs_web_conferences_purgatory_connections
+        oid: 1.3.6.1.4.1.57528.825.836.1.6
+        type: gauge
+        help: Total amount of automatic attendant connections (pending invitation).
+
