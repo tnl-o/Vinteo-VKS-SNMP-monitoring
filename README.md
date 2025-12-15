@@ -1,7 +1,7 @@
 # Vinteo VCS SNMP Monitoring
 
 Конфигурация для мониторинга Vinteo VCS через SNMP Exporter, Prometheus и Grafana.
-
+![alt text](https://github.com/tnl-o/Vinteo-VKS-SNMP-monitoring/edit/main/2025-12-15_15-24.png?raw=true)
 ## Структура проекта
 
 ```
